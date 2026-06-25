@@ -2,13 +2,12 @@
     "task": [
         {
             "name": "幻痛囚笼",
-            "label": "$幻痛囚笼",
             "group": [
                 "daily"
             ],
             "default_check": true,
             "entry": "幻痛囚笼",
-            "description": "<p>自动战斗幻痛囚笼，并自动选择人物作战；请注意角色锁定状态。</p><p>终级区需要自行选择非在岗角色,防止占用在岗角色</p><p><b>速通</b>：每周二5点后可运行2次，首次运行后需等待24小时。</p>",
+            "description": "$task.幻痛囚笼.description",
             "option": [
                 "选择区域"
             ],
@@ -36,7 +35,8 @@
                     "count": 2,
                     "min_interval_hours": 24
                 }
-            }
+            },
+            "label": "$task.幻痛囚笼"
         }
     ],
     "option": {
@@ -47,7 +47,8 @@
                     "pipeline_override": {},
                     "option": [
                         "自行选择编队_囚笼_高级区"
-                    ]
+                    ],
+                    "label": "$case.选择区域.高级区"
                 },
                 {
                     "name": "终级区",
@@ -62,19 +63,21 @@
                     },
                     "option": [
                         "自行选择编队_囚笼_终级区"
-                    ]
+                    ],
+                    "label": "$case.选择区域.终级区"
                 }
             ]
         },
         "自行选择编队_囚笼_高级区": {
-            "label": "选择作战方式（高级区）",
+            "label": "$option.自行选择编队_囚笼_高级区.label",
             "type": "select",
             "default_case": "自动选择",
-            "description": "<p>可选择自动选择、手动指定编队，或手动指定出战人物。</p>",
+            "description": "$option.自行选择编队_囚笼_高级区.description",
             "cases": [
                 {
                     "name": "自动选择",
-                    "pipeline_override": {}
+                    "pipeline_override": {},
+                    "label": "$case.自行选择编队_囚笼_高级区.自动选择"
                 },
                 {
                     "name": "选择编队",
@@ -86,7 +89,8 @@
                         "选择暗队_囚笼",
                         "选择物理队_囚笼",
                         "选择无分类队伍_囚笼"
-                    ]
+                    ],
+                    "label": "$case.自行选择编队_囚笼_高级区.选择编队"
                 },
                 {
                     "name": "选择人物",
@@ -98,19 +102,21 @@
                         "选择暗队角色",
                         "选择物理队角色",
                         "选择无分类队角色"
-                    ]
+                    ],
+                    "label": "$case.自行选择编队_囚笼_高级区.选择人物"
                 }
             ]
         },
         "自行选择编队_囚笼_终级区": {
-            "label": "选择作战方式（终级区）",
+            "label": "$option.自行选择编队_囚笼_终级区.label",
             "type": "select",
             "default_case": "自动选择",
-            "description": "<p>终级区按 A/B/C 分区配置；自动选择为程序配队；选择编队或人物时请在对应分区填写与游戏内一致的预设名或角色名。</p>",
+            "description": "$option.自行选择编队_囚笼_终级区.description",
             "cases": [
                 {
                     "name": "自动选择",
-                    "pipeline_override": {}
+                    "pipeline_override": {},
+                    "label": "$case.自行选择编队_囚笼_终级区.自动选择"
                 },
                 {
                     "name": "选择编队",
@@ -119,7 +125,8 @@
                         "选择A区编队_囚笼",
                         "选择B区编队_囚笼",
                         "选择C区编队_囚笼"
-                    ]
+                    ],
+                    "label": "$case.自行选择编队_囚笼_终级区.选择编队"
                 },
                 {
                     "name": "选择人物",
@@ -128,20 +135,21 @@
                         "选择A区角色_囚笼",
                         "选择B区角色_囚笼",
                         "选择C区角色_囚笼"
-                    ]
+                    ],
+                    "label": "$case.自行选择编队_囚笼_终级区.选择人物"
                 }
             ]
         },
         "选择A区编队_囚笼": {
-            "label": "A 区编队预设名",
-            "description": "<p>输入 A 区使用的编队预设名称，须与游戏内完全一致。</p>",
+            "label": "$option.选择A区编队_囚笼.label",
+            "description": "$option.选择A区编队_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择A区编队_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -178,15 +186,15 @@
             }
         },
         "选择B区编队_囚笼": {
-            "label": "B 区编队预设名",
-            "description": "<p>输入 B 区使用的编队预设名称，须与游戏内完全一致。</p>",
+            "label": "$option.选择B区编队_囚笼.label",
+            "description": "$option.选择B区编队_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择B区编队_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -223,15 +231,15 @@
             }
         },
         "选择C区编队_囚笼": {
-            "label": "C 区编队预设名",
-            "description": "<p>输入 C 区使用的编队预设名称，须与游戏内完全一致。</p>",
+            "label": "$option.选择C区编队_囚笼.label",
+            "description": "$option.选择C区编队_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择C区编队_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -268,15 +276,15 @@
             }
         },
         "选择A区角色_囚笼": {
-            "label": "A 区出战角色名",
-            "description": "<p>输入 A 区锁定出战角色名称，须与游戏内列表一致（含试用前缀时一并输入）。</p>",
+            "label": "$option.选择A区角色_囚笼.label",
+            "description": "$option.选择A区角色_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "角色名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入角色名"
+                    "pattern_msg": "$input.选择A区角色_囚笼.角色名.pattern_msg"
                 }
             ],
             "pipeline_override": {
@@ -324,15 +332,15 @@
             }
         },
         "选择B区角色_囚笼": {
-            "label": "B 区出战角色名",
-            "description": "<p>输入 B 区锁定出战角色名称，须与游戏内列表一致（含试用前缀时一并输入）。</p>",
+            "label": "$option.选择B区角色_囚笼.label",
+            "description": "$option.选择B区角色_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "角色名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入角色名"
+                    "pattern_msg": "$input.选择B区角色_囚笼.角色名.pattern_msg"
                 }
             ],
             "pipeline_override": {
@@ -380,15 +388,15 @@
             }
         },
         "选择C区角色_囚笼": {
-            "label": "C 区出战角色名",
-            "description": "<p>输入 C 区锁定出战角色名称，须与游戏内列表一致（含试用前缀时一并输入）。</p>",
+            "label": "$option.选择C区角色_囚笼.label",
+            "description": "$option.选择C区角色_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "角色名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入角色名"
+                    "pattern_msg": "$input.选择C区角色_囚笼.角色名.pattern_msg"
                 }
             ],
             "pipeline_override": {
@@ -436,15 +444,15 @@
             }
         },
         "选择火队_囚笼": {
-            "label": "选择火队",
-            "description": "<p>输入火队编队名称，需与游戏内预设编队名称完全一致。</p>",
+            "label": "$option.选择火队_囚笼.label",
+            "description": "$option.选择火队_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择火队_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -471,15 +479,15 @@
             }
         },
         "选择雷队_囚笼": {
-            "label": "选择雷队",
-            "description": "<p>输入雷队编队名称，需与游戏内预设编队名称完全一致。</p>",
+            "label": "$option.选择雷队_囚笼.label",
+            "description": "$option.选择雷队_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择雷队_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -506,15 +514,15 @@
             }
         },
         "选择冰队_囚笼": {
-            "label": "选择冰队",
-            "description": "<p>输入冰队编队名称，需与游戏内预设编队名称完全一致。</p>",
+            "label": "$option.选择冰队_囚笼.label",
+            "description": "$option.选择冰队_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择冰队_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -541,15 +549,15 @@
             }
         },
         "选择暗队_囚笼": {
-            "label": "选择暗队",
-            "description": "<p>输入暗队编队名称，需与游戏内预设编队名称完全一致。</p>",
+            "label": "$option.选择暗队_囚笼.label",
+            "description": "$option.选择暗队_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择暗队_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -576,15 +584,15 @@
             }
         },
         "选择物理队_囚笼": {
-            "label": "选择物理队",
-            "description": "<p>输入物理队编队名称，需与游戏内预设编队名称完全一致。</p>",
+            "label": "$option.选择物理队_囚笼.label",
+            "description": "$option.选择物理队_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择物理队_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -611,15 +619,15 @@
             }
         },
         "选择无分类队伍_囚笼": {
-            "label": "选择无分类队伍",
-            "description": "<p>输入无分类队伍编队名称，需与游戏内预设编队名称完全一致。武藏玖型,不明构造体,罗塞塔</p>",
+            "label": "$option.选择无分类队伍_囚笼.label",
+            "description": "$option.选择无分类队伍_囚笼.description",
             "type": "input",
             "inputs": [
                 {
                     "name": "编队名",
                     "pipeline_type": "string",
                     "verify": "^\\s*\\S.*$",
-                    "pattern_msg": "需要输入编队名",
+                    "pattern_msg": "$input.选择无分类队伍_囚笼.编队名.pattern_msg",
                     "default": "编队1"
                 }
             ],
@@ -684,10 +692,10 @@
             }
         },
         "选择火队角色": {
-            "label": "选择火队角色",
+            "label": "$option.选择火队角色.label",
             "type": "select",
             "default": "露西亚·誓焰",
-            "description": "<p>从当前支持的角色中选择火队出战人物。</p>",
+            "description": "$option.选择火队角色.description",
             "cases": [
                 {
                     "name": "露西亚·深红囚影",
@@ -722,7 +730,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.露西亚·深红囚影"
                 },
                 {
                     "name": "拉弥亚·深谣",
@@ -757,7 +766,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.拉弥亚·深谣"
                 },
                 {
                     "name": "露娜·终焉",
@@ -792,7 +802,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.露娜·终焉"
                 },
                 {
                     "name": "露西亚·誓焰",
@@ -827,7 +838,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.露西亚·誓焰"
                 },
                 {
                     "name": "曲·启明",
@@ -862,7 +874,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.曲·启明"
                 },
                 {
                     "name": "比安卡·深痕",
@@ -897,7 +910,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.比安卡·深痕"
                 },
                 {
                     "name": "里·超刻",
@@ -932,7 +946,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.里·超刻"
                 },
                 {
                     "name": "比安卡·晖暮",
@@ -967,7 +982,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.比安卡·晖暮"
                 },
                 {
                     "name": "赛琳娜·希声",
@@ -1002,7 +1018,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.赛琳娜·希声"
                 },
                 {
                     "name": "维罗妮卡·铮骨",
@@ -1037,7 +1054,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.维罗妮卡·铮骨"
                 },
                 {
                     "name": "布偶熊·骇影",
@@ -1072,15 +1090,16 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择火队角色.布偶熊·骇影"
                 }
             ]
         },
         "选择雷队角色": {
-            "label": "选择雷队角色",
+            "label": "$option.选择雷队角色.label",
             "type": "select",
             "default": "露西亚·深红囚影",
-            "description": "<p>从当前支持的角色中选择雷队出战人物。</p>",
+            "description": "$option.选择雷队角色.description",
             "cases": [
                 {
                     "name": "露西亚·深红囚影",
@@ -1115,7 +1134,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.露西亚·深红囚影"
                 },
                 {
                     "name": "拉弥亚·深谣",
@@ -1150,7 +1170,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.拉弥亚·深谣"
                 },
                 {
                     "name": "露娜·终焉",
@@ -1185,7 +1206,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.露娜·终焉"
                 },
                 {
                     "name": "露西亚·誓焰",
@@ -1220,7 +1242,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.露西亚·誓焰"
                 },
                 {
                     "name": "曲·启明",
@@ -1255,7 +1278,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.曲·启明"
                 },
                 {
                     "name": "比安卡·深痕",
@@ -1290,7 +1314,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.比安卡·深痕"
                 },
                 {
                     "name": "里·超刻",
@@ -1325,7 +1350,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.里·超刻"
                 },
                 {
                     "name": "比安卡·晖暮",
@@ -1360,7 +1386,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.比安卡·晖暮"
                 },
                 {
                     "name": "赛琳娜·希声",
@@ -1395,7 +1422,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.赛琳娜·希声"
                 },
                 {
                     "name": "维罗妮卡·铮骨",
@@ -1430,7 +1458,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.维罗妮卡·铮骨"
                 },
                 {
                     "name": "布偶熊·骇影",
@@ -1465,15 +1494,16 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择雷队角色.布偶熊·骇影"
                 }
             ]
         },
         "选择冰队角色": {
-            "label": "选择冰队角色",
+            "label": "$option.选择冰队角色.label",
             "type": "select",
             "default": "曲·启明",
-            "description": "<p>从当前支持的角色中选择冰队出战人物。</p>",
+            "description": "$option.选择冰队角色.description",
             "cases": [
                 {
                     "name": "曲·启明",
@@ -1508,7 +1538,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.曲·启明"
                 },
                 {
                     "name": "布偶熊·骇影",
@@ -1543,7 +1574,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.布偶熊·骇影"
                 },
                 {
                     "name": "露西亚·深红囚影",
@@ -1578,7 +1610,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.露西亚·深红囚影"
                 },
                 {
                     "name": "拉弥亚·深谣",
@@ -1613,7 +1646,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.拉弥亚·深谣"
                 },
                 {
                     "name": "露娜·终焉",
@@ -1648,7 +1682,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.露娜·终焉"
                 },
                 {
                     "name": "露西亚·誓焰",
@@ -1683,7 +1718,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.露西亚·誓焰"
                 },
                 {
                     "name": "比安卡·深痕",
@@ -1718,7 +1754,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.比安卡·深痕"
                 },
                 {
                     "name": "里·超刻",
@@ -1753,7 +1790,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.里·超刻"
                 },
                 {
                     "name": "比安卡·晖暮",
@@ -1788,7 +1826,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.比安卡·晖暮"
                 },
                 {
                     "name": "赛琳娜·希声",
@@ -1823,7 +1862,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.赛琳娜·希声"
                 },
                 {
                     "name": "维罗妮卡·铮骨",
@@ -1858,15 +1898,16 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择冰队角色.维罗妮卡·铮骨"
                 }
             ]
         },
         "选择暗队角色": {
-            "label": "选择暗队角色",
+            "label": "$option.选择暗队角色.label",
             "type": "select",
             "default": "比安卡·晖暮",
-            "description": "<p>从当前支持的角色中选择暗队出战人物。</p>",
+            "description": "$option.选择暗队角色.description",
             "cases": [
                 {
                     "name": "拉弥亚·深谣",
@@ -1901,7 +1942,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.拉弥亚·深谣"
                 },
                 {
                     "name": "比安卡·晖暮",
@@ -1936,7 +1978,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.比安卡·晖暮"
                 },
                 {
                     "name": "露西亚·深红囚影",
@@ -1971,7 +2014,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.露西亚·深红囚影"
                 },
                 {
                     "name": "露娜·终焉",
@@ -2006,7 +2050,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.露娜·终焉"
                 },
                 {
                     "name": "露西亚·誓焰",
@@ -2041,7 +2086,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.露西亚·誓焰"
                 },
                 {
                     "name": "曲·启明",
@@ -2076,7 +2122,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.曲·启明"
                 },
                 {
                     "name": "比安卡·深痕",
@@ -2111,7 +2158,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.比安卡·深痕"
                 },
                 {
                     "name": "里·超刻",
@@ -2146,7 +2194,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.里·超刻"
                 },
                 {
                     "name": "赛琳娜·希声",
@@ -2181,7 +2230,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.赛琳娜·希声"
                 },
                 {
                     "name": "维罗妮卡·铮骨",
@@ -2216,7 +2266,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.维罗妮卡·铮骨"
                 },
                 {
                     "name": "布偶熊·骇影",
@@ -2251,15 +2302,16 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择暗队角色.布偶熊·骇影"
                 }
             ]
         },
         "选择物理队角色": {
-            "label": "选择物理队角色",
+            "label": "$option.选择物理队角色.label",
             "type": "select",
             "default": "赛琳娜·希声",
-            "description": "<p>从当前支持的角色中选择物理队出战人物。</p>",
+            "description": "$option.选择物理队角色.description",
             "cases": [
                 {
                     "name": "比安卡·深痕",
@@ -2294,7 +2346,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.比安卡·深痕"
                 },
                 {
                     "name": "赛琳娜·希声",
@@ -2329,7 +2382,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.赛琳娜·希声"
                 },
                 {
                     "name": "维罗妮卡·铮骨",
@@ -2364,7 +2418,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.维罗妮卡·铮骨"
                 },
                 {
                     "name": "露西亚·深红囚影",
@@ -2399,7 +2454,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.露西亚·深红囚影"
                 },
                 {
                     "name": "拉弥亚·深谣",
@@ -2434,7 +2490,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.拉弥亚·深谣"
                 },
                 {
                     "name": "露娜·终焉",
@@ -2469,7 +2526,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.露娜·终焉"
                 },
                 {
                     "name": "露西亚·誓焰",
@@ -2504,7 +2562,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.露西亚·誓焰"
                 },
                 {
                     "name": "曲·启明",
@@ -2539,7 +2598,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.曲·启明"
                 },
                 {
                     "name": "里·超刻",
@@ -2574,7 +2634,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.里·超刻"
                 },
                 {
                     "name": "比安卡·晖暮",
@@ -2609,7 +2670,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.比安卡·晖暮"
                 },
                 {
                     "name": "布偶熊·骇影",
@@ -2644,15 +2706,16 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择物理队角色.布偶熊·骇影"
                 }
             ]
         },
         "选择无分类队角色": {
-            "label": "选择无分类队角色,武藏玖型,不明构造体,罗塞塔",
+            "label": "$option.选择无分类队角色.label",
             "type": "select",
             "default": "赛琳娜·希声",
-            "description": "<p>从当前支持的角色中选择无分类队出战人物。</p>",
+            "description": "$option.选择无分类队角色.description",
             "cases": [
                 {
                     "name": "比安卡·深痕",
@@ -2747,7 +2810,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.比安卡·深痕"
                 },
                 {
                     "name": "赛琳娜·希声",
@@ -2842,7 +2906,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.赛琳娜·希声"
                 },
                 {
                     "name": "维罗妮卡·铮骨",
@@ -2937,7 +3002,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.维罗妮卡·铮骨"
                 },
                 {
                     "name": "露西亚·深红囚影",
@@ -3032,7 +3098,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.露西亚·深红囚影"
                 },
                 {
                     "name": "拉弥亚·深谣",
@@ -3127,7 +3194,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.拉弥亚·深谣"
                 },
                 {
                     "name": "露娜·终焉",
@@ -3222,7 +3290,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.露娜·终焉"
                 },
                 {
                     "name": "露西亚·誓焰",
@@ -3317,7 +3386,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.露西亚·誓焰"
                 },
                 {
                     "name": "曲·启明",
@@ -3412,7 +3482,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.曲·启明"
                 },
                 {
                     "name": "里·超刻",
@@ -3507,7 +3578,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.里·超刻"
                 },
                 {
                     "name": "比安卡·晖暮",
@@ -3602,7 +3674,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.比安卡·晖暮"
                 },
                 {
                     "name": "布偶熊·骇影",
@@ -3697,7 +3770,8 @@
                                 }
                             }
                         }
-                    }
+                    },
+                    "label": "$case.选择无分类队角色.布偶熊·骇影"
                 }
             ]
         }
