@@ -1,4 +1,4 @@
-{
+﻿{
     "识别角色": {
         "recognition": {
             "type": "TemplateMatch",
@@ -21,13 +21,7 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": "识别角色",
-                "roi_offset": [
-                    0,
-                    0,
-                    150,
-                    40
-                ],
+                "roi": [855, 185, 270, 40],
                 "expected": [
                     "戦闘力"
                 ]
@@ -826,7 +820,8 @@
                     146
                 ],
                 "expected": [
-                    "出撃準備"
+                    "出撃準備",
+                    "作戦準備"
                 ]
             }
         },

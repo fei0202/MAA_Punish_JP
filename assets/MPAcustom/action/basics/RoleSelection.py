@@ -642,16 +642,15 @@ class RoleSelection(CustomAction):
                     metadata.copy() if isinstance(metadata, dict) else {}
                 )
 
+                cx = role_reco.box[0] + role_reco.box[2] // 2
+                cy = role_reco.box[1] + role_reco.box[3] // 2
+                context.tasker.controller.post_click(cx, cy).wait()
+                time.sleep(0.5)
+                power_image = context.tasker.controller.post_screencap().wait().get()
+
                 power_reco = context.run_recognition(
                     entry="识别战斗参数",
-                    image=image,
-                    pipeline_override={
-                        "识别战斗参数": {
-                            "recognition": {
-                                "param": {"roi": role_reco.box},
-                            },
-                        }
-                    },
+                    image=power_image,
                 )
 
                 power_text = None
@@ -668,7 +667,7 @@ class RoleSelection(CustomAction):
                     else:
                         power_reco_2 = context.run_recognition(
                             entry="识别战力",
-                            image=image,
+                            image=power_image,
                         )
                         if power_reco_2 and power_reco_2.hit:
                             power_text = "".join(

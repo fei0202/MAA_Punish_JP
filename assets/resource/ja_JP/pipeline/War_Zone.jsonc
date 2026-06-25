@@ -296,6 +296,7 @@
         "timeout": 60000,
         "next": [
             "[JumpBack]识别人物",
+            "[JumpBack]战斗辅助",
             "[JumpBack]战斗中",
             "战斗结束",
             "[JumpBack]载入中",

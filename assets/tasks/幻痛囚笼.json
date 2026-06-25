@@ -12,6 +12,16 @@
             "option": [
                 "选择区域"
             ],
+            "pipeline_override": {
+                "战斗中": {
+                    "action": {
+                        "type": "custom",
+                        "param": {
+                            "custom_action": "CombatActions"
+                        }
+                    }
+                }
+            },
             "speedrun": {
                 "mode": "weekly",
                 "trigger": {

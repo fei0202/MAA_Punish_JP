@@ -17,6 +17,14 @@
                         "[JumpBack]关闭未拥有人物提示",
                         "[JumpBack]关闭战斗力提示"
                     ]
+                },
+                "战斗中": {
+                    "action": {
+                        "type": "custom",
+                        "param": {
+                            "custom_action": "CombatActions"
+                        }
+                    }
                 }
             },
             "speedrun": {
